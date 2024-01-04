@@ -4,6 +4,8 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const style = {
   position: "absolute",
@@ -19,6 +21,12 @@ const style = {
 };
 
 const MediaCard = ({ data }) => {
+  /*   const theme = useTheme();
+  const matchesSmall = useMediaQuery(theme.breakpoints.up("sm"));
+  const matchesMedium = useMediaQuery(theme.breakpoints.up("md"));
+  const matchesLarge = useMediaQuery(theme.breakpoints.up("lg"));
+  const matchesXlarge = useMediaQuery(theme.breakpoints.up("xl")); */
+
   const [open, setOpen] = useState(false);
   const [id, setId] = useState(null);
   const [modalObj, setModalObj] = useState({
@@ -33,7 +41,7 @@ const MediaCard = ({ data }) => {
   };
   const handleClose = () => setOpen(false);
 
-  const result = data.map((el) => {
+  const cards = data.map((el) => {
     return (
       <CardMedia
         onClick={handleOpen}
@@ -66,7 +74,7 @@ const MediaCard = ({ data }) => {
           alignItems: "center",
         }}
       >
-        {result}
+        {cards}
       </Card>
 
       <Modal open={open} onClose={handleClose}>
