@@ -8,19 +8,6 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ModalWindow from "./ModalWindow";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  height: "50%",
-  width: "70%",
-  bgcolor: "background.paper",
-  border: "1px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 const MediaCard = ({ data }) => {
   /*   const theme = useTheme();
   const matchesSmall = useMediaQuery(theme.breakpoints.up("sm"));

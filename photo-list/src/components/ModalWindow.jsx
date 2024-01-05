@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { Modal, Box, CardMedia } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const style = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  height: "50%",
+  height: "70%",
   width: "70%",
   bgcolor: "background.paper",
   border: "1px solid #000",
@@ -18,29 +23,89 @@ const ModalWindow = ({ data, open, onClose, id }) => {
   const [modalObj, setModalObj] = useState({
     id: null,
     img: "",
+    comments: "",
+  });
+  const [inputData, setInputData] = useState({
+    name: "",
     comment: "",
   });
+
+  const dispatchData = async () => {
+    const response = await fetch(
+      `http://demo1353770.mockable.io/images/comments`,
+      {
+        method: "POST",
+        body: JSON.stringify(inputData),
+      }
+    );
+
+    console.log(response);
+  };
 
   if (id !== null) {
     const modalResult = data.filter((el) => {
       return el.id === id;
     });
+
     modalObj.id = modalResult[0].id;
     modalObj.img = modalResult[0].img;
-    modalObj.comment = modalResult[0].comment;
+    modalObj.comments = modalResult[0].comments.map((comment, idx) => {
+      return <p key={idx}>{comment}</p>;
+    });
   }
 
   return (
     <>
       <Modal open={open} onClose={onClose}>
         <Box sx={style}>
-          {" "}
-          <CardMedia
-            image={modalObj.img}
-            alt="empty"
-            sx={{ height: "60%", width: "50%" }}
-            component="div"
-          />
+          <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+            <CardMedia
+              image={modalObj.img}
+              alt="empty"
+              sx={{ height: "60%", width: "100%", marginBottom: 3 }}
+              component="div"
+            />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+              }}
+            >
+              <TextField
+                onChange={(e) =>
+                  setInputData({ ...inputData, name: e.target.value })
+                }
+                id="outlined-basic-name"
+                label="Name"
+                variant="outlined"
+                sx={{ marginBottom: 2 }}
+              />
+              <TextField
+                onChange={(e) =>
+                  setInputData({ ...inputData, comment: e.target.value })
+                }
+                id="outlined-basic-comment"
+                label="Comment"
+                variant="outlined"
+                sx={{ marginBottom: 2 }}
+              />
+              <Button variant="contained" onClick={dispatchData}>
+                Leave a comment{" "}
+              </Button>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              height: "60%",
+              width: "100%",
+              fontSize: 34,
+              textAlign: "center",
+              justifyContent: "center",
+            }}
+          >
+            {modalObj.comments}
+          </Box>
         </Box>
       </Modal>
     </>
