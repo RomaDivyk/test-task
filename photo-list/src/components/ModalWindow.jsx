@@ -3,23 +3,7 @@ import { Modal, Box, CardMedia } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
-const style = {
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  height: "70%",
-  width: "70%",
-  bgcolor: "background.paper",
-  border: "1px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
-const ModalWindow = ({ data, open, onClose, id }) => {
+const ModalWindow = ({ data, open, onClose, id, matchesMobile }) => {
   const [modalObj, setModalObj] = useState({
     id: null,
     img: "",
@@ -30,7 +14,23 @@ const ModalWindow = ({ data, open, onClose, id }) => {
     comment: "",
   });
 
-  const dispatchData = async () => {
+  const style = {
+    display: "flex",
+    flexDirection: `${matchesMobile ? "column" : "row"}`,
+    justifyContent: "space-between",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    height: "70%",
+    width: "70%",
+    bgcolor: "background.paper",
+    border: "1px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const sendData = async () => {
     const response = await fetch(
       `http://demo1353770.mockable.io/images/comments`,
       {
@@ -62,44 +62,50 @@ const ModalWindow = ({ data, open, onClose, id }) => {
             <CardMedia
               image={modalObj.img}
               alt="empty"
-              sx={{ height: "60%", width: "100%", marginBottom: 3 }}
+              sx={{
+                height: `${matchesMobile ? "300px" : "60%"}`,
+                width: "100%",
+                marginBottom: 3,
+              }}
               component="div"
             />
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                width: "100%",
-              }}
-            >
-              <TextField
-                onChange={(e) =>
-                  setInputData({ ...inputData, name: e.target.value })
-                }
-                id="outlined-basic-name"
-                label="Name"
-                variant="outlined"
-                sx={{ marginBottom: 2 }}
-              />
-              <TextField
-                onChange={(e) =>
-                  setInputData({ ...inputData, comment: e.target.value })
-                }
-                id="outlined-basic-comment"
-                label="Comment"
-                variant="outlined"
-                sx={{ marginBottom: 2 }}
-              />
-              <Button variant="contained" onClick={dispatchData}>
-                Leave a comment{" "}
-              </Button>
-            </Box>
+            {
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                }}
+              >
+                <TextField
+                  onChange={(e) =>
+                    setInputData({ ...inputData, name: e.target.value })
+                  }
+                  id="outlined-basic-name"
+                  label="Name"
+                  variant="outlined"
+                  sx={{ marginBottom: 2 }}
+                />
+                <TextField
+                  onChange={(e) =>
+                    setInputData({ ...inputData, comment: e.target.value })
+                  }
+                  id="outlined-basic-comment"
+                  label="Comment"
+                  variant="outlined"
+                  sx={{ marginBottom: 2 }}
+                />
+                <Button variant="contained" onClick={sendData}>
+                  Leave a comment{" "}
+                </Button>
+              </Box>
+            }
           </Box>
           <Box
             sx={{
               height: "60%",
               width: "100%",
-              fontSize: 34,
+              fontSize: `${matchesMobile ? "16px" : "34px"}`,
               textAlign: "center",
               justifyContent: "center",
             }}

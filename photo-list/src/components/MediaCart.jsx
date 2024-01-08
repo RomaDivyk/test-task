@@ -2,18 +2,17 @@
 import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import { useTheme } from "@mui/material/styles";
+import { Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import json2mq from "json2mq";
 import ModalWindow from "./ModalWindow";
 
 const MediaCard = ({ data }) => {
-  /*   const theme = useTheme();
-  const matchesSmall = useMediaQuery(theme.breakpoints.up("sm"));
-  const matchesMedium = useMediaQuery(theme.breakpoints.up("md"));
-  const matchesLarge = useMediaQuery(theme.breakpoints.up("lg"));
-  const matchesXlarge = useMediaQuery(theme.breakpoints.up("xl")); */
+  const matchesMobile = useMediaQuery(
+    json2mq({
+      maxWidth: 400,
+    })
+  );
 
   const [open, setOpen] = useState(false);
   const [id, setId] = useState(null);
@@ -32,7 +31,7 @@ const MediaCard = ({ data }) => {
         id={el.id}
         sx={{
           height: 300,
-          width: "30%",
+          width: `${matchesMobile ? "100%" : "30%"}`,
           margin: 2,
           objectFit: "cover",
         }}
@@ -44,19 +43,27 @@ const MediaCard = ({ data }) => {
 
   return (
     <>
-      <Card
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-        }}
-      >
-        {cards}
-      </Card>
+      <Container>
+        <Card
+          sx={{
+            display: "flex",
+            flexDirection: `${matchesMobile ? "column" : "row"}`,
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+          }}
+        >
+          {cards}
+        </Card>
+      </Container>
 
-      <ModalWindow data={data} open={open} onClose={handleClose} id={id} />
+      <ModalWindow
+        data={data}
+        open={open}
+        onClose={handleClose}
+        id={id}
+        matchesMobile={matchesMobile}
+      />
     </>
   );
 };

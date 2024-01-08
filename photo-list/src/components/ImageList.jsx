@@ -8,6 +8,7 @@ const ImageList = () => {
 
   useEffect(() => {
     fetchImages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchImages = useCallback(async () => {
