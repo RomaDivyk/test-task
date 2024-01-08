@@ -30,6 +30,7 @@ const MediaCard = ({ data }) => {
         key={el.id}
         id={el.id}
         sx={{
+          cursor: "pointer",
           height: 300,
           width: `${matchesMobile ? "100%" : "30%"}`,
           margin: 2,

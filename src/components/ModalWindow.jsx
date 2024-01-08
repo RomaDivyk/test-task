@@ -58,7 +58,13 @@ const ModalWindow = ({ data, open, onClose, id, matchesMobile }) => {
     <>
       <Modal open={open} onClose={onClose}>
         <Box sx={style}>
-          <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+            }}
+          >
             <CardMedia
               image={modalObj.img}
               alt="empty"
