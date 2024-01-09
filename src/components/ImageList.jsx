@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 
-import { fetchData } from "../api";
+import { MediaCart } from "./index";
 
-import MediaCart from "./MediaCart";
+import { fetchData } from "../api";
 
 const ImageList = () => {
   const [data, setData] = useState([]);

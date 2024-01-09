@@ -5,7 +5,8 @@ import CardMedia from "@mui/material/CardMedia";
 import { Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import json2mq from "json2mq";
-import ModalWindow from "./ModalWindow";
+
+import { ModalWindow } from "./index";
 
 const MediaCard = ({ data }) => {
   const matchesMobile = useMediaQuery(
