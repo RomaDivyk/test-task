@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { Modal, Box, CardMedia } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+
+import { sendData } from "../api";
 
 const ModalWindow = ({ data, open, onClose, id, matchesMobile }) => {
   const [modalObj, setModalObj] = useState({
@@ -28,18 +31,6 @@ const ModalWindow = ({ data, open, onClose, id, matchesMobile }) => {
     border: "1px solid #000",
     boxShadow: 24,
     p: 4,
-  };
-
-  const sendData = async () => {
-    const response = await fetch(
-      `http://demo1353770.mockable.io/images/comments`,
-      {
-        method: "POST",
-        body: JSON.stringify(inputData),
-      }
-    );
-
-    console.log(response);
   };
 
   if (id !== null) {
@@ -101,7 +92,7 @@ const ModalWindow = ({ data, open, onClose, id, matchesMobile }) => {
                   variant="outlined"
                   sx={{ marginBottom: 2 }}
                 />
-                <Button variant="contained" onClick={sendData}>
+                <Button variant="contained" onClick={() => sendData(inputData)}>
                   Leave a comment{" "}
                 </Button>
               </Box>

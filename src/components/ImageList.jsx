@@ -1,4 +1,7 @@
-import { useState, useEffect, useCallback } from "react";
+/* eslint-disable no-unused-vars */
+import { useState, useEffect } from "react";
+
+import { fetchData } from "../api";
 
 import MediaCart from "./MediaCart";
 
@@ -6,22 +9,13 @@ const ImageList = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    fetchImages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const url = `https://demo1353770.mockable.io/images`;
 
-  const fetchImages = useCallback(async () => {
-    try {
-      const response = await fetch(`http://demo1353770.mockable.io/images`);
-      if (!response.ok) {
-        throw new Error(`Something wrong in fetch data`);
-      }
-      const loadedData = await response.json();
-      setData(loadedData);
-    } catch (e) {
-      setError(e.message);
-    }
+  useEffect(() => {
+    fetchData(url).then((res) => {
+      setData(res);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
