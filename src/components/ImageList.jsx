@@ -5,7 +5,9 @@ import { MediaCart } from "./index";
 
 import { fetchData } from "../api";
 
-const ImageList = () => {
+import { StyledImageList } from "../styled/StyledImageList";
+
+const ImageList = ({ children }) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
 
@@ -19,10 +21,10 @@ const ImageList = () => {
   }, []);
 
   return (
-    <>
+    <StyledImageList>
       {<MediaCart data={data} />}
       {error && <h1>{error}</h1>}
-    </>
+    </StyledImageList>
   );
 };
 

@@ -1,11 +1,9 @@
 import { ImageList } from "./components/index";
 
-import "./App.css";
-
 function App() {
   return (
-    <div className="App">
-      <h1>TEST APP</h1>
+    <div>
+      <h1>Test task</h1>
       <ImageList />
     </div>
   );

@@ -1,8 +1,7 @@
 /* eslint-disable array-callback-return */
 import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import { Container } from "@mui/material";
+
+import { Container, Grid, CardMedia } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import json2mq from "json2mq";
 
@@ -11,7 +10,7 @@ import { ModalWindow } from "./index";
 const MediaCard = ({ data }) => {
   const matchesMobile = useMediaQuery(
     json2mq({
-      maxWidth: 400,
+      maxWidth: 900,
     })
   );
 
@@ -26,37 +25,27 @@ const MediaCard = ({ data }) => {
 
   const cards = data.map((el) => {
     return (
-      <CardMedia
-        onClick={handleOpen}
-        key={el.id}
-        id={el.id}
-        sx={{
-          cursor: "pointer",
-          height: 300,
-          width: `${matchesMobile ? "100%" : "30%"}`,
-          margin: 2,
-          objectFit: "cover",
-        }}
-        image={el.img}
-        alt={`img doesn't download`}
-      ></CardMedia>
+      <Grid item key={el.id} xs={12} sm={6} md={4}>
+        <CardMedia
+          onClick={handleOpen}
+          id={el.id}
+          component="img"
+          sx={{
+            cursor: "pointer",
+          }}
+          image={el.img}
+          alt={`img doesn't download`}
+        ></CardMedia>
+      </Grid>
     );
   });
 
   return (
     <>
       <Container>
-        <Card
-          sx={{
-            display: "flex",
-            flexDirection: `${matchesMobile ? "column" : "row"}`,
-            flexWrap: "wrap",
-            justifyContent: "space-evenly",
-            alignItems: "center",
-          }}
-        >
+        <Grid container spacing={4}>
           {cards}
-        </Card>
+        </Grid>
       </Container>
 
       <ModalWindow
