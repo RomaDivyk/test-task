@@ -2,18 +2,12 @@
 import React, { useState } from "react";
 
 import { Container, Grid, CardMedia } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import json2mq from "json2mq";
 
 import { ModalWindow } from "./index";
 
-const MediaCard = ({ data }) => {
-  const matchesMobile = useMediaQuery(
-    json2mq({
-      maxWidth: 900,
-    })
-  );
+import { StyledMediaCart } from "../styled/StyledMediaCart";
 
+const MediaCard = ({ data }) => {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState(null);
 
@@ -26,16 +20,15 @@ const MediaCard = ({ data }) => {
   const cards = data.map((el) => {
     return (
       <Grid item key={el.id} xs={12} sm={6} md={4}>
-        <CardMedia
-          onClick={handleOpen}
-          id={el.id}
-          component="img"
-          sx={{
-            cursor: "pointer",
-          }}
-          image={el.img}
-          alt={`img doesn't download`}
-        ></CardMedia>
+        <StyledMediaCart>
+          <CardMedia
+            onClick={handleOpen}
+            id={el.id}
+            component="img"
+            image={el.img}
+            alt={`img doesn't download`}
+          ></CardMedia>
+        </StyledMediaCart>
       </Grid>
     );
   });
@@ -48,13 +41,7 @@ const MediaCard = ({ data }) => {
         </Grid>
       </Container>
 
-      <ModalWindow
-        data={data}
-        open={open}
-        onClose={handleClose}
-        id={id}
-        matchesMobile={matchesMobile}
-      />
+      <ModalWindow data={data} open={open} onClose={handleClose} id={id} />
     </>
   );
 };

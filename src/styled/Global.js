@@ -11,5 +11,3 @@ export const Global = createGlobalStyle`
        
 }
 `;
-
-// Add colors and media queries

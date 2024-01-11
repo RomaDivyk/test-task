@@ -7,7 +7,7 @@ import { fetchData } from "../api";
 
 import { StyledImageList } from "../styled/StyledImageList";
 
-const ImageList = ({ children }) => {
+const ImageList = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
 
