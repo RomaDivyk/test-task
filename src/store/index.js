@@ -1,10 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import consoleSlice from "./console_slice";
+import createSagaMiddleware from "@redux-saga/core";
+import fetchSlice from "./fetch_slice";
+
+import rootSaga from "./root_sagas";
+
+const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: {
-    cons: consoleSlice,
+    fetchData: fetchSlice,
+  },
+  middleware: () => {
+    return [sagaMiddleware];
   },
 });
+
+sagaMiddleware.run(rootSaga);
 
 export default store;

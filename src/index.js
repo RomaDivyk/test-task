@@ -7,8 +7,6 @@ import App from "./App";
 import store from "./store/index";
 import { Global } from "./styled/Global";
 
-console.log(store);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
