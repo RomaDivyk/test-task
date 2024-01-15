@@ -1,33 +1,30 @@
-/// check
+import React, { useState } from 'react';
 
-/* eslint-disable array-callback-return */
-import React, { useState } from "react";
+import { Container, Grid, CardMedia } from '@mui/material';
 
-import { Container, Grid, CardMedia } from "@mui/material";
+import { ModalWindow } from './index';
 
-import { ModalWindow } from "./index";
-
-import { StyledMediaCart } from "../styled/StyledMediaCart";
+import { StyledMediaCart } from '../styled/StyledMediaCart';
 
 const MediaCard = ({ data }) => {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState(null);
 
-  const handleOpen = (e) => {
-    setId(e.target.id);
+  const handleOpen = (event) => {
+    setId(event.target.id);
     setOpen(true);
   };
   const handleClose = () => setOpen(false);
 
-  const cards = data.map((el) => {
+  const cards = data.map((element) => {
     return (
-      <Grid item key={el.id} xs={12} sm={6} md={4}>
+      <Grid item key={element.id} xs={12} sm={6} md={4}>
         <StyledMediaCart>
           <CardMedia
             onClick={handleOpen}
-            id={el.id}
+            id={element.id}
             component="img"
-            image={el.img}
+            image={element.img}
             alt={`img doesn't download`}
           ></CardMedia>
         </StyledMediaCart>
@@ -43,7 +40,7 @@ const MediaCard = ({ data }) => {
         </Grid>
       </Container>
 
-      <ModalWindow data={data} open={open} onClose={handleClose} id={id} />
+      <ModalWindow id={id} data={data} open={open} onClose={handleClose} />
     </>
   );
 };

@@ -1,24 +1,22 @@
-import axios from "axios";
-import { put, takeLatest } from "redux-saga/effects";
+import axios from 'axios';
+import { put, takeLatest } from 'redux-saga/effects';
 
-import { loadData } from "./fetch_slice";
+import { loadDataReduc } from './fetch_slice';
 
 const url = `https://demo1353770.mockable.io/images`;
 
 function* getDataSaga() {
   try {
     const response = yield axios.get(url);
-    console.log("HELLO SAGA");
-    if (!response.ok) {
+    if (response.status !== 200) {
       throw new Error(`Something wrong in fetch data`);
     }
-
-    yield put(loadData(response.data));
+    yield put(loadDataReduc(response.data));
   } catch (error) {
     console.log(error);
   }
 }
 
 export function* watchGetData() {
-  yield takeLatest("GET_DATA", getDataSaga);
+  yield takeLatest('fetchData/getDataFetch', getDataSaga);
 }

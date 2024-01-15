@@ -1,19 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const state = {
+const initialState = {
   data: [],
+  isLoading: false,
 };
 
 const fetchSlice = createSlice({
-  name: "fetchData",
-  initialState: state,
+  name: 'fetchData',
+  initialState: initialState,
   reducers: {
-    loadDataReduc: (state, { payload }) => {
-      state.data = payload;
+    getDataFetch: (state) => {
+      state.isLoading = true;
+    },
+    loadDataReduc: (state, action) => {
+      state.data = action.payload;
     },
   },
 });
 
-export const loadData = fetchSlice.actions;
+export const { loadDataReduc, getDataFetch } = fetchSlice.actions;
 
 export default fetchSlice.reducer;

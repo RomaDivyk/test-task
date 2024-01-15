@@ -1,43 +1,21 @@
-/* eslint-disable no-unused-vars */
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { MediaCart } from "./index";
+import { MediaCart } from './index';
 
-import { fetchData } from "../api";
+import { StyledImageList } from '../styled/StyledImageList';
 
-import { StyledImageList } from "../styled/StyledImageList";
-import { loadData } from "../store/fetch_slice";
+import { getDataFetch } from '../store/fetch_slice';
 
 const ImageList = () => {
-  const stateData = useSelector((state) => state.fetchData.data);
+  const data = useSelector((state) => state.fetchData.data);
   const dispatch = useDispatch();
-  console.log(stateData);
-
-  const [data, setData] = useState([]);
-  const [error, setError] = useState("");
-
-  console.log(data);
-
-  const url = `https://demo1353770.mockable.io/images`;
 
   useEffect(() => {
-    fetchData(url).then((res) => {
-      setData(res);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    dispatch(getDataFetch());
+  }, [dispatch]);
 
-  /*  useEffect(() => {
-    dispatch(loadData.loadDataReduc());
-  }, []); */
-
-  return (
-    <StyledImageList>
-      {<MediaCart data={data} />}
-      {error && <h1>{error}</h1>}
-    </StyledImageList>
-  );
+  return <StyledImageList>{<MediaCart data={data} />}</StyledImageList>;
 };
 
 export default ImageList;

@@ -1,7 +1,4 @@
-/// check
-
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Modal,
   Box,
@@ -10,36 +7,36 @@ import {
   Button,
   Container,
   Grid,
-} from "@mui/material";
+} from '@mui/material';
 
 import {
   StyledModalWindow,
   Line,
   styleModal,
-} from "../styled/StyledModalWindow";
+} from '../styled/StyledModalWindow';
 
-import { sendData } from "../api";
+import { sendData } from '../api';
 
-const ModalWindow = ({ data, open, onClose, id }) => {
+const ModalWindow = ({ id, data, open, onClose }) => {
   const [modalObj, setModalObj] = useState({
     id: null,
-    img: "",
-    comments: "",
+    img: '',
+    comments: '',
   });
   const [inputData, setInputData] = useState({
-    name: "",
-    comment: "",
+    name: '',
+    comment: '',
   });
 
   if (id !== null) {
-    const modalResult = data.filter((el) => {
-      return el.id === id;
+    const modalResult = data.filter((element) => {
+      return element.id === id;
     });
 
     modalObj.id = modalResult[0].id;
     modalObj.img = modalResult[0].img;
-    modalObj.comments = modalResult[0].comments.map((comment, idx) => {
-      return <Line key={idx}>{comment}</Line>;
+    modalObj.comments = modalResult[0].comments.map((comment, index) => {
+      return <Line key={index}>{comment}</Line>;
     });
   }
 
@@ -55,13 +52,13 @@ const ModalWindow = ({ data, open, onClose, id }) => {
               md={6}
               lg={4.5}
               xl={4}
-              sx={{ maxHeight: "100%" }}
+              sx={{ maxHeight: '100%' }}
             >
               <CardMedia
                 image={modalObj.img}
                 alt="empty"
                 component="img"
-                sx={{ maxHeight: "80%", marginBottom: 3 }}
+                sx={{ maxHeight: '80%', marginBottom: 3 }}
               />
               <Box>{modalObj.comments}</Box>
             </Grid>
@@ -69,31 +66,32 @@ const ModalWindow = ({ data, open, onClose, id }) => {
             <Grid item xs={10} sm={6} md={4}>
               <Box
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "100%",
+                  display: 'flex',
+                  flexDirection: 'column',
+                  width: '100%',
+                  height: 'auto',
                 }}
               >
                 <TextField
                   onChange={(e) =>
                     setInputData({ ...inputData, name: e.target.value })
                   }
-                  id="outlined-basic-name"
+                  id="filled-basic-name"
                   label="Name"
-                  variant="outlined"
-                  sx={{ marginBottom: 2 }}
+                  variant="filled"
+                  margin="normal"
                 />
                 <TextField
                   onChange={(e) =>
                     setInputData({ ...inputData, comment: e.target.value })
                   }
-                  id="outlined-basic-comment"
+                  id="filled-basic-comment"
                   label="Comment"
-                  variant="outlined"
-                  sx={{ marginBottom: 2 }}
+                  variant="filled"
+                  margin="normal"
                 />
                 <Button variant="contained" onClick={() => sendData(inputData)}>
-                  Leave a comment{" "}
+                  Leave a comment{' '}
                 </Button>
               </Box>
             </Grid>

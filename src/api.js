@@ -1,15 +1,14 @@
-/// check
-
-export const fetchData = async (url) => {
+export const fetchData = async () => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(`https://demo1353770.mockable.io/images`);
     if (!response.ok) {
       throw new Error(`Something wrong in fetch data`);
     }
     const loadedData = await response.json();
+    console.log(loadedData);
     return loadedData;
-  } catch (e) {
-    return e.message;
+  } catch (error) {
+    return error.message;
   }
 };
 
@@ -17,7 +16,7 @@ export const sendData = async (inputData) => {
   const response = await fetch(
     `http://demo1353770.mockable.io/images/comments`,
     {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(inputData),
     }
   );
