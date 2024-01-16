@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { ImageList } from './components';
+import { ImageList, Form } from './components';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
         <Route path="/" element={<ImageList />} />
         <Route path="/2" element={<h1>TEST PAGE 2</h1>} />
         <Route path="/3" element={<h1>TEST PAGE 3</h1>} />
+        <Route path="/auth" element={<Form />} />
       </Routes>
     </div>
   );
