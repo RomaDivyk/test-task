@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { ImageList } from './components/index';
+import { ImageList } from './components';
 
 function App() {
   return (

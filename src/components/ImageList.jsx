@@ -5,7 +5,7 @@ import { MediaCart } from './index';
 
 import { StyledImageList } from '../styled/StyledImageList';
 
-import { getDataFetch } from '../store/fetch_slice';
+import { getDataFetch } from '../redux/ducks/fetch_slice';
 
 const ImageList = () => {
   const data = useSelector((state) => state.fetchData.data);
@@ -15,7 +15,11 @@ const ImageList = () => {
     dispatch(getDataFetch());
   }, [dispatch]);
 
-  return <StyledImageList>{<MediaCart data={data} />}</StyledImageList>;
+  return (
+    <StyledImageList>
+      <MediaCart data={data} />
+    </StyledImageList>
+  );
 };
 
 export default ImageList;

@@ -16,21 +16,19 @@ const MediaCard = ({ data }) => {
   };
   const handleClose = () => setOpen(false);
 
-  const cards = data.map((element) => {
-    return (
-      <Grid item key={element.id} xs={12} sm={6} md={4}>
-        <StyledMediaCart>
-          <CardMedia
-            onClick={handleOpen}
-            id={element.id}
-            component="img"
-            image={element.img}
-            alt={`img doesn't download`}
-          ></CardMedia>
-        </StyledMediaCart>
-      </Grid>
-    );
-  });
+  const cards = data.map((element) => (
+    <Grid item key={element.id} xs={12} sm={6} md={4}>
+      <StyledMediaCart>
+        <CardMedia
+          onClick={handleOpen}
+          id={element.id}
+          component="img"
+          image={element.img}
+          alt={`img doesn't download`}
+        ></CardMedia>
+      </StyledMediaCart>
+    </Grid>
+  ));
 
   return (
     <>
