@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { ImageList, Form } from './components';

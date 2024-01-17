@@ -15,7 +15,7 @@ export const fetchData = async () => {
   }
 };
 
-export const sendData = async (inputData) => {
+export const sendData = async (inputData: { name: string; comment: string }) => {
   const response = await fetch(sendUrl, {
     method: 'POST',
     body: JSON.stringify(inputData),
