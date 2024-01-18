@@ -8,7 +8,7 @@ import { StyledImageList } from '../styled/StyledImageList';
 import { getDataFetch } from '../redux/ducks/fetch_slice';
 
 const ImageList = () => {
-  const data = useSelector((state) => state.fetchData.data);
+  const data = useSelector((state: any) => state.fetchData.data);
   const dispatch = useDispatch();
 
   useEffect(() => {

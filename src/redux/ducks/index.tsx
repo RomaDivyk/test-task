@@ -11,9 +11,7 @@ const store = configureStore({
   reducer: {
     fetchData: fetchSlice,
   },
-  middleware: () => {
-    return [sagaMiddleware];
-  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);

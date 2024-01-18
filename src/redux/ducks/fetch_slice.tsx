@@ -6,12 +6,12 @@ const FETCH = 'fetchData/getDataFetch';
 
 const url = `https://demo1353770.mockable.io/images`;
 
-type StateType = {
-  data: Array<string>;
+type State = {
+  data: any[];
   isLoading: boolean;
 };
 
-const initialState = {
+const initialState: State = {
   data: [],
   isLoading: false,
 };

@@ -6,12 +6,18 @@ import { ModalWindow } from './index';
 
 import { StyledMediaCart } from '../styled/StyledMediaCart';
 
-const MediaCard = ({ data }) => {
-  const [open, setOpen] = useState(false);
-  const [id, setId] = useState(null);
+interface MediaCardProps {
+  data: any[];
+  isLoading?: boolean;
+}
 
-  const handleOpen = (event) => {
-    setId(event.target.id);
+const MediaCard = ({ data }: MediaCardProps) => {
+  const [open, setOpen] = useState(false);
+  const [id, setId] = useState('');
+
+  const handleOpen: React.MouseEventHandler<HTMLImageElement> = (event) => {
+    setId((event.target as Element).id);
+
     setOpen(true);
   };
   const handleClose = () => setOpen(false);
@@ -38,7 +44,7 @@ const MediaCard = ({ data }) => {
         </Grid>
       </Container>
 
-      <ModalWindow id={id} data={data} open={open} onClose={handleClose} />
+      {<ModalWindow id={id} data={data} open={open} onClose={handleClose} />}
     </>
   );
 };
