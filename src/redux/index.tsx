@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from '@redux-saga/core';
+import { all, fork } from 'redux-saga/effects';
 
-import fetchSlice from './fetch_slice';
+import fetchSlice from './ducks/imagesDuck';
+import { watchGetImages } from './ducks/imagesDuck';
 
-import rootSaga from './root_sagas';
+const rootSaga = function* () {
+  yield all([fork(watchGetImages)]);
+};
 
 const sagaMiddleware = createSagaMiddleware();
 

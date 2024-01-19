@@ -5,7 +5,14 @@ import { StyledModalWindow, Line, styleModal } from '../styled/StyledModalWindow
 
 import { sendData } from '../api';
 
-const ModalWindow = ({ id, data, open, onClose }) => {
+interface ModalWindowProps {
+  id: string | number | null;
+  data: any[];
+  open: boolean;
+  onClose: () => void;
+}
+
+const ModalWindow = ({ id, data, open, onClose }: ModalWindowProps) => {
   const [modalObj, setModalObj] = useState({
     id: null,
     img: '',
@@ -21,7 +28,9 @@ const ModalWindow = ({ id, data, open, onClose }) => {
 
     modalObj.id = modalResult[0].id;
     modalObj.img = modalResult[0].img;
-    modalObj.comments = modalResult[0].comments.map((comment, index) => <Line key={index}>{comment}</Line>);
+    modalObj.comments = modalResult[0].comments.map((comment: string, index: number) => (
+      <Line key={index}>{comment}</Line>
+    ));
   }
 
   return (

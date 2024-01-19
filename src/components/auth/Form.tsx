@@ -3,49 +3,76 @@ import { TextField, Button } from '@mui/material';
 
 import { StyledDiv, StyledForm } from '../../styled/StyledForm';
 
-const validate = (values) => {
-  const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
-  } else if (values.firstName.length > 15) {
-    errors.firstName = 'Must be 15 characters or less';
-  }
-  if (!values.lastName) {
-    errors.lastName = 'Required';
-  } else if (values.lastName.length > 20) {
-    errors.lastName = 'Must be 20 characters or less';
-  }
-  if (!values.email) {
-    errors.email = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address';
-  }
-  if (!values.password) {
-    errors.password = 'Required';
-  } else if (!/^[A-Za-z]\w{7,14}$/.test(values.password)) {
-    errors.password = 'Invalid password';
-  }
-  if (!values.repeatPassword) {
-    errors.repeatPassword = 'Required';
-  } else if (values.password !== values.repeatPassword) {
-    errors.repeatPassword = `Password doesn't match`;
-  }
-  return errors;
+interface Errors {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  repeatPassword: string;
+}
+
+interface InitialValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  repeatPassword: string;
+}
+
+const initialValues: InitialValues = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  repeatPassword: '',
 };
 
 const Form = () => {
-  const formik = useFormik({
-    initialValues: {
+  const validate = (values: InitialValues) => {
+    const errors: Errors = {
       firstName: '',
       lastName: '',
       email: '',
       password: '',
       repeatPassword: '',
-    },
+    };
+    if (!values.firstName) {
+      errors.firstName = 'Required';
+    } else if (values.firstName.length > 15) {
+      errors.firstName = 'Must be 15 characters or less';
+    }
+    if (!values.lastName) {
+      errors.lastName = 'Required';
+    } else if (values.lastName.length > 20) {
+      errors.lastName = 'Must be 20 characters or less';
+    }
+    if (!values.email) {
+      errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      errors.email = 'Invalid email address';
+    }
+    if (!values.password) {
+      errors.password = 'Required';
+    } else if (!/^[A-Za-z]\w{7,14}$/.test(values.password)) {
+      errors.password = 'Invalid password';
+    }
+    if (!values.repeatPassword) {
+      errors.repeatPassword = 'Required';
+    } else if (values.password !== values.repeatPassword) {
+      errors.repeatPassword = `Password doesn't match`;
+    }
+    return errors;
+  };
+
+  const sendData = (values: InitialValues) => {
+    console.log(values);
+    alert(JSON.stringify(values, null, 2));
+  };
+
+  const formik = useFormik<InitialValues>({
+    initialValues,
+    onSubmit: sendData,
     validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
   });
 
   return (

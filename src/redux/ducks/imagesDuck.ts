@@ -1,10 +1,10 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
 import { put, takeLatest } from 'redux-saga/effects';
 
-const FETCH = 'fetchData/getDataFetch';
+import { fetchData } from '../../api';
 
-const url = `https://demo1353770.mockable.io/images`;
+const FETCH = 'fetchData/getDataFetch';
 
 type State = {
   data: any[];
@@ -31,20 +31,17 @@ const fetchSlice = createSlice({
 
 export const { loadDataReduc, getDataFetch } = fetchSlice.actions;
 
-function* getDataSaga() {
+function* getImagesSaga() {
   try {
-    const response: AxiosResponse = yield axios.get(url);
-    if (response.status !== 200) {
-      throw new Error(`Something wrong in fetch data`);
-    }
+    const response: AxiosResponse = yield fetchData();
     yield put(loadDataReduc(response.data));
   } catch (error) {
     console.log(error);
   }
 }
 
-export function* watchGetData() {
-  yield takeLatest(FETCH, getDataSaga);
+export function* watchGetImages() {
+  yield takeLatest(FETCH, getImagesSaga);
 }
 
 export default fetchSlice.reducer;

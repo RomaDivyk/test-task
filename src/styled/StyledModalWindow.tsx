@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from './Constants';
 
 export const StyledModalWindow = styled.div``;
 
@@ -15,8 +16,8 @@ export const styleModal = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: '70%',
-  bgcolor: 'background.paper',
-  border: '1px solid #000',
+  bgcolor: `${colors.backgroundPaper}`,
+  border: `1px solid ${colors.black}`,
   boxShadow: 24,
   p: 4,
   overflow: 'hidden',

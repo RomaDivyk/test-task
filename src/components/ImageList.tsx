@@ -5,7 +5,7 @@ import { MediaCart } from './index';
 
 import { StyledImageList } from '../styled/StyledImageList';
 
-import { getDataFetch } from '../redux/ducks/fetch_slice';
+import { getDataFetch } from '../redux/ducks/imagesDuck';
 
 const ImageList = () => {
   const data = useSelector((state: any) => state.fetchData.data);

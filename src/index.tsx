@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import store from './redux/ducks';
+import store from './redux';
 import { Global } from './styled/Global';
 import App from './App';
 

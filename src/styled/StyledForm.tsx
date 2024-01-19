@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { devices } from './Constants';
+import { devices, colors } from './Constants';
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -8,8 +8,8 @@ export const StyledDiv = styled.div`
   top: 50%;
   left: 50%;
   width: 100%;
-  bgcolor: background.paper;
-  border: 1px solid #000;
+  bgcolor: ${colors.backgroundPaper};
+  border: 1px solid ${colors.black};
   boxshadow: 24;
   p: 4;
   overflow: hidden;

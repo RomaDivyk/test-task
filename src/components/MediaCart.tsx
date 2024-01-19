@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { Container, Grid, CardMedia } from '@mui/material';
 
@@ -13,14 +13,13 @@ interface MediaCardProps {
 
 const MediaCard = ({ data }: MediaCardProps) => {
   const [open, setOpen] = useState(false);
-  const [id, setId] = useState('');
+  const [id, setId] = useState<string | number | null>(null);
 
   const handleOpen: React.MouseEventHandler<HTMLImageElement> = (event) => {
     setId((event.target as Element).id);
-
     setOpen(true);
   };
-  const handleClose = () => setOpen(false);
+  const handleClose = (): void => setOpen(false);
 
   const cards = data.map((element) => (
     <Grid item key={element.id} xs={12} sm={6} md={4}>

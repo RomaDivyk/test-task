@@ -1,18 +1,16 @@
-const fetchUrl = `https://demo1353770.mockable.io/images`;
-const sendUrl = `http://demo1353770.mockable.io/images/comments`;
+import axios, { AxiosResponse } from 'axios';
+
+const domain = `https://demo1353770.mockable.io`;
+
+const fetchUrl = `${domain}/images`;
+const sendUrl = `${domain}/images/comments`;
 
 export const fetchData = async () => {
-  try {
-    const response = await fetch(fetchUrl);
-    if (!response.ok) {
-      throw new Error(`Something wrong in fetch data`);
-    }
-    const loadedData = await response.json();
-    console.log(loadedData);
-    return loadedData;
-  } catch (error) {
-    return error.message;
+  const response: AxiosResponse = await axios.get(fetchUrl);
+  if (response.status !== 200) {
+    throw new Error(`Something wrong in fetch data`);
   }
+  return response;
 };
 
 export const sendData = async (inputData: { name: string; comment: string }) => {

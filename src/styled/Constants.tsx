@@ -17,3 +17,12 @@ export const devices = {
   '2xl': `(max-width: ${breakpoints['2xl']})`,
   '4k': `(max-width: ${breakpoints['4k']})`,
 };
+
+export const colors = {
+  backgroundPaper: `background.paper`,
+  black: `#000`,
+};
+
+export const fonts = {
+  consolas: `consolas`,
+};
