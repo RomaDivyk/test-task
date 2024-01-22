@@ -3,17 +3,13 @@ import { useState } from 'react';
 import { Container, Grid, CardMedia } from '@mui/material';
 
 import { ModalWindow } from './index';
+import { FetchData } from './ImageList';
 
 import { StyledMediaCart } from '../styled/StyledMediaCart';
 
-interface MediaCardProps {
-  data: any[];
-  isLoading?: boolean;
-}
-
-const MediaCard = ({ data }: MediaCardProps) => {
+const MediaCard = ({ data }: FetchData) => {
   const [open, setOpen] = useState(false);
-  const [id, setId] = useState<string | number | null>(null);
+  const [id, setId] = useState<string>('');
 
   const handleOpen: React.MouseEventHandler<HTMLImageElement> = (event) => {
     setId((event.target as Element).id);
@@ -43,7 +39,7 @@ const MediaCard = ({ data }: MediaCardProps) => {
         </Grid>
       </Container>
 
-      {<ModalWindow id={id} data={data} open={open} onClose={handleClose} />}
+      <ModalWindow id={id} data={data} open={open} onClose={handleClose} />
     </>
   );
 };

@@ -1,29 +1,36 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import { Modal, Box, CardMedia, TextField, Button, Container, Grid } from '@mui/material';
 
 import { StyledModalWindow, Line, styleModal } from '../styled/StyledModalWindow';
 
+import { Data } from './ImageList';
+
 import { sendData } from '../api';
 
 interface ModalWindowProps {
-  id: string | number | null;
-  data: any[];
+  id: string;
+  data: Data[];
   open: boolean;
   onClose: () => void;
 }
 
 const ModalWindow = ({ id, data, open, onClose }: ModalWindowProps) => {
-  const [modalObj, setModalObj] = useState({
-    id: null,
+  interface ModalObj {
+    id: string;
+    img: string;
+    comments: ReactElement[];
+  }
+  const [modalObj] = useState<ModalObj>({
+    id: '',
     img: '',
-    comments: '',
+    comments: [],
   });
   const [inputData, setInputData] = useState({
     name: '',
     comment: '',
   });
 
-  if (id !== null) {
+  if (id !== '') {
     const modalResult = data.filter((element) => element.id === id);
 
     modalObj.id = modalResult[0].id;

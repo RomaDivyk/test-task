@@ -7,8 +7,22 @@ import { StyledImageList } from '../styled/StyledImageList';
 
 import { getDataFetch } from '../redux/ducks/imagesDuck';
 
+export interface Data {
+  id: string;
+  img: string;
+  comments: string[];
+}
+export interface FetchData {
+  data: Data[];
+}
+
+export type StateType = {
+  fetchData: FetchData;
+  isLoading: boolean;
+};
+
 const ImageList = () => {
-  const data = useSelector((state: any) => state.fetchData.data);
+  const data = useSelector((state: StateType) => state.fetchData.data);
   const dispatch = useDispatch();
 
   useEffect(() => {

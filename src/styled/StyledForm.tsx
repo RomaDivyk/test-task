@@ -4,14 +4,12 @@ import { devices, colors } from './Constants';
 
 export const StyledDiv = styled.div`
   display: flex;
-  justifycontent: space-between;
+  justify-content: center;
   top: 50%;
   left: 50%;
   width: 100%;
-  bgcolor: ${colors.backgroundPaper};
+  background-color: ${colors.backgroundPaper};
   border: 1px solid ${colors.black};
-  boxshadow: 24;
-  p: 4;
   overflow: hidden;
 `;
 

@@ -1,17 +1,23 @@
 import { AxiosResponse } from 'axios';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { put, takeLatest } from 'redux-saga/effects';
 
 import { fetchData } from '../../api';
 
 const FETCH = 'fetchData/getDataFetch';
 
-type State = {
-  data: any[];
+interface FetchData {
+  id: number;
+  img: string;
+  comments: string;
+}
+
+type StateType = {
+  data: FetchData[];
   isLoading: boolean;
 };
 
-const initialState: State = {
+const initialState: StateType = {
   data: [],
   isLoading: false,
 };
@@ -20,10 +26,10 @@ const fetchSlice = createSlice({
   name: 'fetchData',
   initialState: initialState,
   reducers: {
-    getDataFetch: (state: any) => {
+    getDataFetch: (state: StateType) => {
       state.isLoading = true;
     },
-    loadDataReduc: (state: any, action: any) => {
+    loadDataReduc: (state: StateType, action: PayloadAction<FetchData[]>) => {
       state.data = action.payload;
     },
   },

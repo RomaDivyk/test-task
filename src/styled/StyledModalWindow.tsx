@@ -1,11 +1,32 @@
 import styled from 'styled-components';
-import { colors } from './Constants';
+import { colors, devices } from './Constants';
 
 export const StyledModalWindow = styled.div``;
 
 export const Line = styled.p`
-  font-size: 10;
   margin-bottom: 1vh;
+
+  @media ${devices['4k']} {
+    font-size: 1.5rem;
+  }
+  @media ${devices['2xl']} {
+    font-size: 1.5rem;
+  }
+  @media ${devices.xl} {
+    font-size: 1.5rem;
+  }
+  @media ${devices.lg} {
+    font-size: 1.5rem;
+  }
+  @media ${devices.md} {
+    font-size: 1rem;
+  }
+  @media ${devices.sm} {
+    font-size: 1rem;
+  }
+  @media ${devices.xs} {
+    font-size: 0.5rem;
+  }
 `;
 
 export const styleModal = {
