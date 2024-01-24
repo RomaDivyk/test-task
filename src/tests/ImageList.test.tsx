@@ -5,14 +5,14 @@ import { Provider } from 'react-redux';
 
 import store from '../redux';
 
-import App from '../App';
+import { ImageList } from '../components';
 
 describe('testing App component', () => {
-  it('renders correctly App component', () => {
+  it('renders correctly ImageList component', () => {
     const wrapper = renderer.create(
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <ImageList />
         </BrowserRouter>
       </Provider>
     );

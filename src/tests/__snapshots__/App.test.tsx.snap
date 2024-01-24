@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`testing App component renders correctly 1`] = `
+exports[`testing App component renders correctly App component 1`] = `
 <div>
   <h1>
     Test task
