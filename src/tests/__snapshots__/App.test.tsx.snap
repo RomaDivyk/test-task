@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing App component renders correctly 1`] = `
+<div>
+  <h1>
+    Test task
+  </h1>
+  <div
+    className="sc-beySPh"
+  >
+    <div
+      className="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 css-480o17-MuiGrid-root"
+      />
+    </div>
+    <div
+      className="sc-dmyCSP"
+    />
+  </div>
+</div>
+`;
