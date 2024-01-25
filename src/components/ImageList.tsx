@@ -30,7 +30,7 @@ const ImageList = () => {
   }, [dispatch]);
 
   return (
-    <StyledImageList>
+    <StyledImageList data-testid="imageListId">
       <MediaCart data={data} />
     </StyledImageList>
   );

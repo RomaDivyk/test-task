@@ -5,7 +5,7 @@ import { ImageList, Form } from './components';
 
 function App() {
   return (
-    <div>
+    <div data-testid="appId">
       <h1>Test task</h1>
       <Routes>
         <Route path="/" element={<ImageList />} />

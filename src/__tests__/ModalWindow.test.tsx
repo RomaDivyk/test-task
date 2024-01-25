@@ -5,14 +5,21 @@ import { Provider } from 'react-redux';
 
 import store from '../redux';
 
-import { Form } from '../components';
+import { ModalWindow } from '../components';
 
-describe('testing App component', () => {
-  it('renders correctly Form component', () => {
+describe('testing ModalWindow component', () => {
+  it('should match a snapshot in ModalWindow component', () => {
     const wrapper = renderer.create(
       <Provider store={store}>
         <BrowserRouter>
-          <Form />
+          <ModalWindow
+            id={''}
+            data={[]}
+            open={false}
+            onClose={function (): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
         </BrowserRouter>
       </Provider>
     );

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`testing App component renders correctly Form component 1`] = `
+exports[`testing Form component should match a snapshot in Form component 1`] = `
 Array [
   <h1>
     AUTH PAGE

@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`testing App component renders correctly MediaCart component 1`] = `
+exports[`testing MediaCart component should match a snapshot in MediaCart component 1`] = `
 Array [
   <div
     className="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+    data-testid="mediaCartId"
   >
     <div
       className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 css-480o17-MuiGrid-root"

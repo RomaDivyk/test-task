@@ -42,7 +42,7 @@ function* getImagesSaga() {
     const response: AxiosResponse = yield fetchData();
     yield put(loadDataReduc(response.data));
   } catch (error) {
-    /* console.log(error); */
+    console.log(error);
   }
 }
 
