@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing App component should match a snapshot in App component 1`] = `
+<div
+  data-testid="appId"
+>
+  <h1>
+    Test task
+  </h1>
+  <div
+    className="sc-beySPh"
+    data-testid="imageListId"
+  >
+    <div
+      className="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+      data-testid="mediaCartId"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 css-480o17-MuiGrid-root"
+      />
+    </div>
+    <div
+      className="sc-dmyCSP"
+    />
+  </div>
+</div>
+`;
