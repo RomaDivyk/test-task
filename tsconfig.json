@@ -18,6 +18,7 @@
 
     "allowSyntheticDefaultImports": true
   },
+
   "exclude": ["node_modules", "build", "scripts", "acceptance-tests", "webpack", "jest", "src/setupTests.ts"],
   "types": ["typePatches"]
 }
